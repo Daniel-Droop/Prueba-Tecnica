@@ -64,7 +64,7 @@
         }
 
         .imagen-container img {
-            max-width: 300px; /* Tamaño máximo de la imagen */
+            max-width: 300px; 
       
             border-radius: 5px;
         }
@@ -74,20 +74,18 @@
 
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Obtener datos del formulario
         $nombre = $_POST["nombre"];
         $apellido = $_POST["apellido"];
         $correo = $_POST["correo_electronico"];
         $contrasena = $_POST["contrasena"];
 
-        // Validación básica de campos (puedes agregar más validaciones según tus necesidades)
         if (empty($nombre) || empty($apellido) || empty($correo) || empty($contrasena)) {
             echo "Por favor, completa todos los campos.";
         } else {
-            // Incluir el archivo de conexión a la base de datos
+
             include "conexion.php";
 
-            // Consulta para insertar el nuevo usuario en la tabla "usuarios"
+
             $sql = "INSERT INTO usuarios (nombre, apellido, correo_electronico, contrasena) VALUES ('$nombre', '$apellido', '$correo', '$contrasena')";
 
             if ($conexion->query($sql) === TRUE) {
@@ -96,7 +94,6 @@
                 echo "Error al registrar el nuevo usuario: " . $conexion->error;
             }
 
-            // Cerrar la conexión
             $conexion->close();
         }
     }

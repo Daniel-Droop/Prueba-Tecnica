@@ -62,7 +62,7 @@
         }
 
         .imagen-container img {
-            max-width: 300px; /* Tamaño máximo de la imagen */
+            max-width: 300px; 
       
             border-radius: 5px;
         }
@@ -70,20 +70,20 @@
 </head>
 <body>
     <?php
-    // Incluir el archivo de conexión a la base de datos
+ 
     include "conexion.php";
 
-    // Verificar si se ha enviado el formulario
+ 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Obtener datos del formulario
+
         $correo = $_POST["correo"];
         $nueva_contrasena = $_POST["nueva_contrasena"];
 
-        // Validación básica de campos (puedes agregar más validaciones según tus necesidades)
+
         if (empty($correo) || empty($nueva_contrasena)) {
             echo "Por favor, completa todos los campos.";
         } else {
-            // Consulta para actualizar la contraseña en la tabla "usuarios"
+
             $sql_update = "UPDATE usuarios SET contrasena = '$nueva_contrasena' WHERE correo_electronico = '$correo'";
 
             if ($conexion->query($sql_update) === TRUE) {
